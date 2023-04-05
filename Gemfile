@@ -22,6 +22,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'bullet', '~> 7.0'
   gem 'pry'
+  gem 'rspec-rails', '~> 6.0'
 end
 
 group :development do
@@ -30,6 +31,5 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 6.0'
   gem 'shoulda-matchers', '~> 5.3'
 end
