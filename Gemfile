@@ -17,6 +17,7 @@ gem 'bootsnap', require: false
 gem 'pundit', '~> 2.3'
 gem 'faker', '~> 3.1'
 gem 'factory_bot_rails', '~> 6.2'
+gem 'kaminari', '~> 1.2'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
