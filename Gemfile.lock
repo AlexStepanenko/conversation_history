@@ -279,6 +279,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.27-arm64-darwin)
+      railties (>= 6.0.0)
     thor (1.2.1)
     thread_safe (0.3.6)
     timeout (0.3.2)
@@ -322,8 +324,9 @@ DEPENDENCIES
   rubocop
   rubycritic (~> 4.7)
   shoulda-matchers (~> 5.3)
-  sprockets-rails
+  sprockets-rails (~> 3.4)
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
 
 RUBY VERSION
