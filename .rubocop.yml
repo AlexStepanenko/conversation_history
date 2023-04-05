@@ -1,0 +1,24 @@
+Documentation:
+ Enabled: false
+
+Layout/LineLength:
+ Max: 120
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: 'nested'
+
+AllCops:
+  NewCops: disable
+  EnabledByDefault: false
+  SuggestExtensions: false
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+Style/SymbolArray:
+  EnforcedStyle: 'brackets'
