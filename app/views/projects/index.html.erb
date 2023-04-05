@@ -1,5 +1,20 @@
-<% @projects.each do |project| %>
-  <h2><%= project.name %></h2>
-<% end %>
-
-<%= paginate @projects %>
+<div class="flex flex-col items-center">
+  <h1 class="text-3xl font-bold mb-8">Projects</h1>
+  <table class="w-full border-collapse">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="py-3 px-6 text-left font-bold uppercase text-gray-600 border border-gray-300 hidden md:table-cell">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr class="hover:bg-gray-100">
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            <%= link_to project.name, project_path(project) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @projects %>
+</div>
