@@ -1,0 +1,7 @@
+<div class="border rounded-lg shadow-md p-4 mb-4">
+  <div class="flex items-center justify-between mb-2">
+    <h4 class="font-semibold text-gray-700"><%= comment.user.name %></h4>
+    <span class="text-gray-600"><%= time_ago_in_words(comment.created_at) %> ago</span>
+  </div>
+  <p class="text-gray-800"><%= comment.text %></p>
+</div>

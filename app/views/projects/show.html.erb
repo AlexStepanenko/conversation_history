@@ -2,6 +2,22 @@
   <h1 class="text-3xl font-bold mb-8"><%= @project.name %></h1>
   <div class="border border-gray-300 rounded-lg p-6">
     <p class="text-lg"><%= @project.name %></p>
+
+    <div class="w-1/2 comments-list" data-controller="comments">
+      <%= turbo_frame_tag 'comments_list', target: '_top' do %>
+        <%= render partial: "comments/comment", collection: @project.comments.includes([:user]) %>
+      <% end %>
+    </div>
+
+    <%= form_with(model: [ @project, Comment.new ]) do |form| %>
+      <div class="mt-8 mb-4">
+        <%= form.text_area :text, class: "form-input block w-full rounded-md shadow-sm transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "Add a comment..." %>
+      </div>
+
+      <div class="flex justify-end">
+        <%= form.submit "Add Comment", class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300 ease-in-out" %>
+      </div>
+    <% end %>
   </div>
   <%= link_to "Back to Projects", projects_path, class: "mt-8" %>
 </div>
