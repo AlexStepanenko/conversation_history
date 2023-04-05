@@ -13,6 +13,22 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
+      <% if current_user.present? %>
+        <div>
+          <span class="text-gray-300 mr-4">
+            Logged in as <%= current_user.name %>
+          </span>
+          <%= link_to 'Logout', session_path(current_user.id), data: { "turbo-method": :delete } %>
+
+        </div>
+      <% end %>
+
+      <% flash.each do |key, value| %>
+        <div class="bg-<%= flash_class(key) %> text-white p-4 text-center">
+          <%= value %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>
