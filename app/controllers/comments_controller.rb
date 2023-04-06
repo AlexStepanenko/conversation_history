@@ -3,28 +3,27 @@
 class CommentsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
-    @comment = @project.comments.build(comment_params)
-    @comment.user = current_user
+    result = Comments::CreateAction.call(@project, current_user, comment_params)
 
-    if @comment.save
+    if result.success
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(
-            :comments_list, 
-            partial: 'comments/comment', 
-            locals: { comment: @comment }
+          render turbo_stream: turbo_stream.replace(
+            :new_comments,
+            partial: 'comments/comments', 
+            locals: { comments: result.comments }
           )
         end
         format.html { redirect_to project_path(@project) }
       end
     else
-      render 'projects/show'
+      redirect_to project_path(@project), alert: result.message
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:text)
+    params.require(:comment).permit(:text, :status)
   end
 end
